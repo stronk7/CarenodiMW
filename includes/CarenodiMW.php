@@ -6,6 +6,7 @@ use ConfigFactory;
 use ContentHandler;
 use MediaWiki\Revision\RevisionRecord;
 use OutputPage;
+use ParserOutput;
 use Skin;
 use WikiPage;
 
@@ -21,9 +22,9 @@ class CarenodiMW {
      * Add the rel=canonical and the meta=refresh tags to pages matching a regexp-based configuration.
      *
      * @param OutputPage &$out
-     * @param Skin &$skin
+     * @param ParserOutput &$parser
      */
-    public static function onBeforePageDisplay(OutputPage &$out, Skin &$skin) {
+    public static function onOutputPageParserOutput(OutputPage &$out, ParserOutput &$parser) {
 
         // We are going to apply the changes to existing article pages.
         if (!$out->getTitle()->exists()) { // Non-existing page, nothing to do.

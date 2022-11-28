@@ -36,7 +36,7 @@
     "CarenodiMW": "GlobalVarConfig::newInstance"
   },
   "Hooks": {
-    "BeforePageDisplay": "MediaWiki\\Extension\\CarenodiMW::onBeforePageDisplay"
+    "OutputPageParserOutput": "MediaWiki\\Extension\\CarenodiMW::onOutputPageParserOutput"
   },
   "manifest_version": 2
 }
