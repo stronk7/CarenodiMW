@@ -1,0 +1,42 @@
+{
+  "name": "CarenodiMW",
+  "version": "0.99.0",
+  "author": [
+    "Eloy Lafuente (stronk7)"
+  ],
+  "url": "https://github.com/stronk7/CarenodiMW",
+  "descriptionmsg": "Add the rel=canonical and the meta=refresh tags to pages matching a regexp-based configuration",
+  "license-name": "BSD-3-Clause",
+  "type": "other",
+  "requires": {
+    "MediaWiki": ">=1.31 <1.36"
+  },
+  "AutoloadClasses": {
+    "MediaWiki\\Extension\\CarenodiMW": "includes/CarenodiMW.php"
+  },
+  "config": {
+    "CarenodiMW_base": {
+      "value": "https://example.com",
+      "description": "Base URL to be used for all the canonical and refresh tags"
+    },
+    "CarenodiMW_canonical_regexp": {
+      "value": "/new location is (.*) this/",
+      "description": "Regular expression to extract the path for the canonical tags"
+    },
+    "CarenodiMW_refresh_regexp": {
+      "value": "/new location is (.*) this/",
+      "description": "Regular expression to extract the path for the refresh tags"
+    },
+    "CarenodiMW_refresh_wait": {
+      "value": "5",
+      "description": "Number of seconds to perform the refresh to new URL (0 = immediate)"
+    }
+  },
+    "ConfigRegistry": {
+    "CarenodiMW": "GlobalVarConfig::newInstance"
+  },
+  "Hooks": {
+    "BeforePageDisplay": "MediaWiki\\Extension\\CarenodiMW::onBeforePageDisplay"
+  },
+  "manifest_version": 2
+}
