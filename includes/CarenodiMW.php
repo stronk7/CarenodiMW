@@ -54,12 +54,12 @@ class CarenodiMW {
             return true;
         }
 
-        if (@preg_match($canonicalRegexp, '') === false) {
+        if ($canonicalRegexp && @preg_match($canonicalRegexp, '') === false) {
             wfDebugLog('CarenodiMW', __METHOD__ . ' - Invalid $wgCarenodiMW_canonical_regexp regular expression found');
             return true;
         }
 
-        if (@preg_match($refreshRegexp, '') === false) {
+        if ($refreshRegexp && @preg_match($refreshRegexp, '') === false) {
             wfDebugLog('CarenodiMW', __METHOD__ . ' - Invalid $wgCarenodiMW_refresh_regexp regular expression found');
             return true;
         }
