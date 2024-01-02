@@ -36,7 +36,8 @@ class CarenodiMW {
         if (!$out->isArticle()) { // Non-article page, nothing to do.
             return true;
         }
-        if ($out->getPageTitle() !== $out->getTitle()->getText()) { // Page and title don't match, nothing to do.
+        if ( strip_tags( $out->getPageTitle() ) !== strip_tags( $out->getTitle()->getText() ) ) {
+            // Page and title don't match, nothing to do.
             return true;
         }
 
