@@ -1,6 +1,6 @@
 {
   "name": "CarenodiMW",
-  "version": "0.99.2",
+  "version": "0.99.3",
   "author": [
     "Eloy Lafuente (stronk7)"
   ],
@@ -9,7 +9,7 @@
   "license-name": "BSD-3-Clause",
   "type": "other",
   "requires": {
-    "MediaWiki": ">=1.31 <1.36"
+    "MediaWiki": ">=1.39"
   },
   "AutoloadClasses": {
     "MediaWiki\\Extension\\CarenodiMW": "includes/CarenodiMW.php"
