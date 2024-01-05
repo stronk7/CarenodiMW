@@ -6,7 +6,7 @@ Note that this extension manages both features as HTML tags, not as HTTP headers
 
 ## Installation
 
-- Current version requires `MediaWiki >=1.31 <1.36`
+- Current version requires `MediaWiki >=1.39`. Use release [v0.99.2](https://github.com/stronk7/CarenodiMW/releases/tag/v0.99.2) for `MediaWiki >=1.31 <1.36`.
 - [Download and unzip it](https://github.com/stronk7/CarenodiMW/releases) (or clone this git repo).
 - Copy the folder as `CarenodiMW` within the `extensions`directory of your mediawiki site.
 
