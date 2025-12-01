@@ -2,13 +2,11 @@
 
 namespace MediaWiki\Extension;
 
-use ConfigFactory;
-use ContentHandler;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use OutputPage;
 use ParserOutput;
 use Skin;
-use WikiPage;
 
 /**
  * Main CarenodiMW class implementation.
@@ -44,7 +42,7 @@ class CarenodiMW {
         wfDebugLog('CarenodiMW', __METHOD__ . ' called for "' . $out->getPageTitle() . '"');
 
         // Arrived here, let's verify the configuration.
-        $config = ConfigFactory::getDefaultInstance()->makeConfig('CarenodiMW');
+        $config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig('CarenodiMW');
         $base = $config->get('CarenodiMW_base');
         $canonicalRegexp = $config->get('CarenodiMW_canonical_regexp');
         $refreshRegexp = $config->get('CarenodiMW_refresh_regexp');
@@ -73,10 +71,10 @@ class CarenodiMW {
         // This is not ideal, but after playing with different hooks, individually or combining them, it's
         // the easiest way to access to the original wikitext of the page that we want to examine against
         // our regular expressions. 4-5 queries are added to the page.
-        if (!$wikiPage = WikiPage::factory($out->getTitle())) {
+        if (!$wikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $out->getTitle() ) ) {
             wfDebugLog('CarenodiMW', __METHOD__ . ' - Something went wrong, cannot get the original wikitext');
         }
-        $wikitext = ContentHandler::getContentText($wikiPage->getContent(RevisionRecord::RAW));
+        $wikitext = $wikiPage->getContent(RevisionRecord::RAW)->getText();
 
         // Do we need to add the rel=canonical.
         $path = '';
